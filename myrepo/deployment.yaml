@@ -8,6 +8,7 @@ metadata:
   creationTimestamp: "2024-12-24T09:06:34Z"
   generation: 1
   labels:
+    app.kubernetes.io/instance: hr-service-dev
     run: hr-service-dev
   name: hr-service-dev
   namespace: default
@@ -148,11 +149,11 @@ status:
     reason: MinimumReplicasUnavailable
     status: "False"
     type: Available
-  - lastTransitionTime: "2024-12-24T09:16:35Z"
-    lastUpdateTime: "2024-12-24T09:16:35Z"
-    message: ReplicaSet "hr-service-dev-f9889bdc7" has timed out progressing.
-    reason: ProgressDeadlineExceeded
-    status: "False"
+  - lastTransitionTime: '2024-12-24T09:06:34Z'
+    lastUpdateTime: '2024-12-24T09:06:34Z'
+    message: ReplicaSet "hr-service-dev-f9889bdc7" is progressing.
+    reason: ReplicaSetUpdated
+    status: 'True'
     type: Progressing
   observedGeneration: 1
   replicas: 1
