@@ -10,24 +10,27 @@
       run: hr-service-dev
     name: hr-service-dev
     namespace: default
-    resourceVersion: "9407079"
-    uid: 7ec84682-bc14-4aac-b0f2-dc8038739e68
+    # resourceVersion: "9407079"
+    # uid: 7ec84682-bc14-4aac-b0f2-dc8038739e68
+    resourceVersion: '345459'
+    uid: 121e00c3-f42f-4a6e-92df-3e432f1801f7
   spec:
-    clusterIP: 10.12.11.154
+    clusterIP: clusterIP: 10.110.161.244 #10.12.11.154
     clusterIPs:
-    - 10.12.11.154
+    - 10.110.161.244 #10.12.11.154
     externalTrafficPolicy: Cluster
     internalTrafficPolicy: Cluster
     ipFamilies:
     - IPv4
     ipFamilyPolicy: SingleStack
     ports:
-    - nodePort: 31237
+    - nodePort: 30008
+    # - nodePort: 31237
       port: 80
       protocol: TCP
-      targetPort: 8080
+      targetPort: 80 #80
     selector:
-      run: hr-service-dev
+      app: hr-service-dev
     sessionAffinity: None
     type: NodePort
   status:
