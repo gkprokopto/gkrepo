@@ -117,7 +117,7 @@ spec:
                 mongodb://coli-mongo-user:Tw2T1c3ijyaQEanIcBiGkPCaPuvj5B7QPg3XNJsLMo1hxVUIDk0cgEfenlRCAo8xMiP3CDNztSDIUyGiqbdXylgSRur15Jl1sYz@10.128.0.48:27050/health-data?retryWrites=true&serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=coligomed&authMechanism=SCRAM-SHA-1
             - name: BACKGROUND_SYNC_USER_ID
               value: 750c814f-3c3e-4c22-86ce-b83397b8b053
-          image: gcr.io/dhp-poc/hr-service:2024-12-06T11-06-25Z.3611.39b8c4e4
+          image: nginx:latest #gcr.io/dhp-poc/hr-service:2024-12-06T11-06-25Z.3611.39b8c4e4
           imagePullPolicy: Always
           name: hr-service-dev
           ports:
@@ -129,7 +129,7 @@ spec:
               memory: 2Gi
             requests:
               cpu: 200m
-          terminationMessagePath: /dev/hr-service-log
+          # terminationMessagePath: /dev/hr-service-log
           terminationMessagePolicy: File
           # volumeMounts:
           #   - mountPath: /usr/hr-service-dev/config.properties
@@ -146,10 +146,10 @@ spec:
         #     defaultMode: 420
         #     name: hr-service-dev-configmap
         #   name: config
-        - name: secret
-          secret:
-            defaultMode: 420
-            secretName: hr-service-dev-secret
+        # - name: secret
+        #   secret:
+        #     defaultMode: 420
+        #     secretName: hr-service-dev-secret
 status:
   conditions:
     - lastTransitionTime: '2024-12-24T16:20:50Z'
