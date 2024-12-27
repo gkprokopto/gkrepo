@@ -9,8 +9,7 @@ metadata:
     run: device-integration-dev
   name: device-integration-dev
   namespace: default
-  resourceVersion: '404006'	
-  uid: 986eae62-e104-42bd-9e93-97f4c941cae2
+  
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
