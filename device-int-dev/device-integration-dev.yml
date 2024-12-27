@@ -14,9 +14,9 @@ metadata:
   resourceVersion: "417819"
   uid: 5b5ec85c-2828-4472-b862-0f193ee82f1d
 spec:
-  clusterIP: 10.108.200.237
-  clusterIPs:
-  - 10.108.200.237
+  # clusterIP: 10.108.200.237
+  # clusterIPs:
+  # - 10.108.200.237
   externalTrafficPolicy: Cluster
   internalTrafficPolicy: Cluster
   ipFamilies:
