@@ -131,7 +131,7 @@ spec:
           value: mongodb://coli-mongo-user:Tw2T1c3ijyaQEanIcBiGkPCaPuvj5B7QPg3XNJsLMo1hxVUIDk0cgEfenlRCAo8xMiP3CDNztSDIUyGiqbdXylgSRur15Jl1sYz@10.128.0.48:27050/device-integration?retryWrites=true&serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=coligomed&authMechanism=SCRAM-SHA-1
         - name: TENOVI_API_KEY
           value: 3webXWJv.NYsTBd4dZqBW7DsXZISCYt8rcY4u83hn
-        image: gcr.io/dhp-poc/device-integration:2024-11-27T10-17-39Z.989.1c53ae6b
+        image: nginx:latest #gcr.io/dhp-poc/device-integration:2024-11-27T10-17-39Z.989.1c53ae6b
         imagePullPolicy: Always
         name: device-integration-dev
         ports:
@@ -147,8 +147,8 @@ spec:
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
         volumeMounts:
-        - mountPath: /usr/device-integration-dev/config.properties
-          name: config
+        # - mountPath: /usr/device-integration-dev/config.properties
+        #   name: config
         - mountPath: /etc/device-integration-dev/secrets
           name: secret
       dnsPolicy: ClusterFirst
@@ -157,10 +157,10 @@ spec:
       securityContext: {}
       terminationGracePeriodSeconds: 60
       volumes:
-      - configMap:
-          defaultMode: 420
-          name: device-integration-dev-configmap
-        name: config
+      # - configMap:
+      #     defaultMode: 420
+      #     name: device-integration-dev-configmap
+      #   name: config
       - name: secret
         secret:
           defaultMode: 420
