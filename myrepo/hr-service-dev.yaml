@@ -15,9 +15,9 @@
     resourceVersion: '345459'
     uid: 121e00c3-f42f-4a6e-92df-3e432f1801f7
   spec:
-    clusterIP: 10.110.161.244
-    clusterIPs:
-    - 10.110.161.244
+    # clusterIP: 10.110.161.244
+    # clusterIPs:
+    # - 10.110.161.244
     externalTrafficPolicy: Cluster
     internalTrafficPolicy: Cluster
     ipFamilies:
