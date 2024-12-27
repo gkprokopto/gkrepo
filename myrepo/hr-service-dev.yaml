@@ -4,7 +4,7 @@
     annotations:
       # cloud.google.com/neg: '{"ingress":true}'
       kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"hr-service-dev"},"name":"hr-service-dev","namespace":"default"},"spec":{"ports":[{"nodePort":30008,"port":80,"protocol":"TCP","targetPort":80}],"selector":{"app":"hr-service-dev"},"type":"NodePort"}}
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"1034"},"creationTimestamp":"2022-01-01T18:54:34Z","generation":1036,"labels":{"app.kubernetes.io/instance":"hr-service-dev","run":"hr-service-dev"},"name":"hr-service-dev","namespace":"default","resourceVersion":"984905278","uid":"9e248052-324d-40c9-803a-745574c93107"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"run":"hr-service-dev"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"annotations":{"kubectl.kubernetes.io/restartedAt":"2024-05-08T15:32:12Z"},"creationTimestamp":null,"labels":{"run":"hr-service-dev"}},"spec":{"containers":[{"env":[{"name":"lock","value":"key"}],"image":"nginx","imagePullPolicy":"Always","name":"hr-service-dev","ports":[{"containerPort":8080,"protocol":"TCP"}],"resources":{"limits":{"cpu":"0.5","memory":"500Mi"},"requests":{"cpu":"100m","memory":"200Mi"}},"terminationMessagePath":"/dev/hr-service-log","terminationMessagePolicy":"File","volumeMounts":[{"mountPath":"/etc/hr-service-dev/secrets","name":"secret"}]}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":60,"volumes":[{"name":"secret","secret":{"defaultMode":420,"secretName":"hr-service-dev-secret"}}]}}},"status":{"availableReplicas":1,"conditions":[{"lastTransitionTime":"2024-12-04T08:41:52Z","lastUpdateTime":"2024-12-04T08:41:52Z","message":"Deployment has minimum availability.","reason":"MinimumReplicasAvailable","status":"True","type":"Available"},{"lastTransitionTime":"2022-01-01T18:54:34Z","lastUpdateTime":"2024-12-17T20:15:19Z","message":"ReplicaSet\"hr-service-dev-7d45d5fcbc\" has successfully progressed.","reason":"NewReplicaSetAvailable","status":"True","type":"Progressing"}],"observedGeneration":1036,"readyReplicas":1,"replicas":1,"updatedReplicas":1}}
       # {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"cloud.google.com/neg":"{\"ingress\":true}"},"creationTimestamp":"2021-12-31T00:47:29Z","labels":{"run":"hr-service-dev"},"name":"hr-service-dev","namespace":"default","resourceVersion":"7346655","uid":"d2122217-6f83-4c4a-a01f-0b3a6bb0e4b4"},"spec":{"externalTrafficPolicy":"Cluster","ports":[{"port":80,"protocol":"TCP","targetPort":8080}],"selector":{"run":"hr-service-dev"},"sessionAffinity":"None","type":"LoadBalancer"}}
     creationTimestamp: "2022-01-02T19:29:35Z"
     labels:
@@ -13,7 +13,7 @@
     name: hr-service-dev
     namespace: default
     # resourceVersion: '345459'
-    # uid: 121e00c3-f42f-4a6e-92df-3e432f1801f7
+    uid: 9e248052-324d-40c9-803a-745574c93107
   spec:
     # clusterIP: 10.110.161.244
     # clusterIPs:
