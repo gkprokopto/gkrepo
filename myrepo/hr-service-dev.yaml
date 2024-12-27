@@ -12,8 +12,8 @@
       # run: hr-service-dev
     name: hr-service-dev
     namespace: default
-    resourceVersion: '345459'
-    uid: 121e00c3-f42f-4a6e-92df-3e432f1801f7
+    # resourceVersion: '345459'
+    # uid: 121e00c3-f42f-4a6e-92df-3e432f1801f7
   spec:
     # clusterIP: 10.110.161.244
     # clusterIPs:

@@ -13,9 +13,9 @@
     resourceVersion: "9413785"
     uid: 3b9020e6-1f81-417d-8adf-f594d31f12be
   spec:
-    clusterIP: 10.12.10.169
-    clusterIPs:
-    - 10.12.10.169
+    # clusterIP: 10.12.10.169
+    # clusterIPs:
+    # - 10.12.10.169
     externalTrafficPolicy: Cluster
     internalTrafficPolicy: Cluster
     ipFamilies:
