@@ -53,22 +53,22 @@ spec:
         volumeMounts:
         # - mountPath: /usr/device-integration-dev/config.properties
         #   name: config
-        - mountPath: /etc/device-integration-dev/secrets
-          name: secret
+        # - mountPath: /etc/device-integration-dev/secrets
+        #   name: secret
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 60
-      volumes:
+      # volumes:
       # - configMap:
       #     defaultMode: 420
       #     name: device-integration-dev-configmap
       #   name: config
       # - name: secret
-      #   secret:
-      #     defaultMode: 420
-      #     secretName: device-integration-dev-secret
+        # secret:
+        #   defaultMode: 420
+        #   secretName: device-integration-dev-secret
 status:
   availableReplicas: 1
   # conditions:
