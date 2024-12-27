@@ -65,25 +65,25 @@ spec:
       #     defaultMode: 420
       #     name: device-integration-dev-configmap
       #   name: config
-      - name: secret
-        secret:
-          defaultMode: 420
-          secretName: device-integration-dev-secret
+      # - name: secret
+      #   secret:
+      #     defaultMode: 420
+      #     secretName: device-integration-dev-secret
 status:
   availableReplicas: 1
-  conditions:
-  - lastTransitionTime: '2024-12-27T11:55:01Z'	
-    lastUpdateTime: '2024-12-27T11:55:01Z'
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
-  - lastTransitionTime: '2024-12-27T11:54:58Z'	
-    lastUpdateTime: '2024-12-27T11:55:01Z'
-    message: ReplicaSet "device-integration-dev-57d76bb6f9" has successfully
-    reason: NewReplicaSetAvailable
-    status: "True"
-    type: Progressing
+  # conditions:
+  # - lastTransitionTime: '2024-12-27T11:55:01Z'	
+  #   lastUpdateTime: '2024-12-27T11:55:01Z'
+  #   message: Deployment has minimum availability.
+  #   reason: MinimumReplicasAvailable
+  #   status: "True"
+  #   type: Available
+  # - lastTransitionTime: '2024-12-27T11:54:58Z'	
+  #   lastUpdateTime: '2024-12-27T11:55:01Z'
+  #   message: ReplicaSet "device-integration-dev-57d76bb6f9" has successfully
+  #   reason: NewReplicaSetAvailable
+  #   status: "True"
+  #   type: Progressing
   observedGeneration: 1
   readyReplicas: 1
   replicas: 1
