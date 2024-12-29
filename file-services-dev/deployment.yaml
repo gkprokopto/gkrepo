@@ -4,7 +4,7 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1" # ArgoCD will update this on sync
   creationTimestamp: null # Allow Kubernetes to set this automatically
-  generation: 1 # Automatically managed by Kubernetes
+  generation: 2 # Automatically managed by Kubernetes
   labels:
     app.kubernetes.io/instance: file-services-dev
     run: file-services-dev
