@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: dhp-background-synchronizer-dev
   namespace: default
-  annotations:
-    cloud.google.com/neg: '{"ingress":true}'
+  # annotations:
+  #   cloud.google.com/neg: '{"ingress":true}'
 spec:
-  clusterIP: 10.12.10.48
+  # clusterIP: 10.12.10.48
   externalTrafficPolicy: Cluster
   ports:
     - nodePort: 31931
