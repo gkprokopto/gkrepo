@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+  labels:
+    run: file-services-dev
+  name: file-services-dev
+  namespace: default
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - nodePort: 32149
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    run: file-services-dev
+  sessionAffinity: None
+  type: LoadBalancer 
