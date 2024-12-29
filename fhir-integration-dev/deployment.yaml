@@ -68,7 +68,7 @@ status:
     reason: NewReplicaSetAvailable
     status: "True"
     type: Progressing
-  observedGeneration: 1
+  observedGeneration: 2
   readyReplicas: 1
   replicas: 1
   updatedReplicas: 1
