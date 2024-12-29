@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   annotations: {}  # Removed revision and kubectl restart annotations
   labels:
+    app.kubernetes.io/instance: fhir-integration-dev
     run: fhir-integration-dev
   name: fhir-integration-dev
   namespace: default
