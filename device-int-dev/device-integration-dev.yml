@@ -24,6 +24,4 @@ spec:
   sessionAffinity: None
   type: NodePort
 status:
-  loadBalancer:
-    ingress:
-    - hostname: localhost
+  loadBalancer: {}
