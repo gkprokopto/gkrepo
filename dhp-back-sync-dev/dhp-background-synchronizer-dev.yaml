@@ -1,32 +1,19 @@
-  apiVersion: v1
-  kind: Service
-  metadata:
-    annotations:
-      cloud.google.com/neg: '{"ingress":true}'
-      kubectl.kubernetes.io/last-applied-configuration: |
-        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"cloud.google.com/neg":"{\"ingress\":true}"},"name":"dhp-background-synchronizer-dev","namespace":"default"},"spec":{"externalTrafficPolicy":"Cluster","ports":[{"port":80,"protocol":"TCP","targetPort":8080}],"selector":{"run":"dhp-background-synchronizer-dev"},"sessionAffinity":"None","type":"NodePort"}}
-    creationTimestamp: "2022-02-03T14:08:13Z"
-    name: dhp-background-synchronizer-dev
-    namespace: default
-    resourceVersion: "28817301"
-    uid: 7b5b3dcc-6dc5-4d1b-a438-0c7729380f87
-  spec:
-    clusterIP: 10.12.10.48
-    clusterIPs:
-    - 10.12.10.48
-    externalTrafficPolicy: Cluster
-    internalTrafficPolicy: Cluster
-    ipFamilies:
-    - IPv4
-    ipFamilyPolicy: SingleStack
-    ports:
+apiVersion: v1
+kind: Service
+metadata:
+  name: dhp-background-synchronizer-dev
+  namespace: default
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+spec:
+  clusterIP: 10.12.10.48
+  externalTrafficPolicy: Cluster
+  ports:
     - nodePort: 31931
       port: 80
       protocol: TCP
       targetPort: 8080
-    selector:
-      run: dhp-background-synchronizer-dev
-    sessionAffinity: None
-    type: NodePort
-  status:
-    loadBalancer: {}
+  selector:
+    run: dhp-background-synchronizer-dev
+  sessionAffinity: None
+  type: NodePort
