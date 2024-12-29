@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations: {}  # Removed revision and kubectl restart annotations
+  labels:
+    run: fhir-integration-dev
+  name: fhir-integration-dev
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: fhir-integration-dev
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        run: fhir-integration-dev
+    spec:
+      containers:
+      - env:
+        - name: lock
+          value: key  # Only this env variable remains
+        image: nginx:latest  # Updated image to nginx:latest
+        imagePullPolicy: Always
+        name: fhir-integration-dev
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "1"
+            memory: 2Gi
+          requests:
+            cpu: 250m
+            memory: 256Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 60
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: fhir-integration-dev-configmap
+        name: config
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2024-10-26T02:51:08Z"
+    lastUpdateTime: "2024-10-26T02:51:08Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-01-03T17:46:01Z"
+    lastUpdateTime: "2024-12-20T13:51:35Z"
+    message: ReplicaSet "fhir-integration-dev-5d959d56fd" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 296  # This will be updated automatically by ArgoCD
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
