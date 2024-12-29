@@ -32,11 +32,11 @@ spec:
           protocol: TCP
         resources:
           limits:
-            cpu: 500m
-            memory: 500Mi
+            cpu: "100m"
+            memory: 256Mi
           requests:
-            cpu: 100m
-            memory: 200Mi
+            cpu: "50m"
+            memory: 128Mi
         volumeMounts:
         - mountPath: /opt/app/synchronizer/config/secrets
           name: secret

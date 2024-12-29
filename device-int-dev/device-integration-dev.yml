@@ -3,18 +3,12 @@ kind: Service
 metadata:
   annotations:
     cloud.google.com/neg: '{"ingress":true}'
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"cloud.google.com/neg":"{\"ingress\":true}"},"creationTimestamp":"2022-01-03T18:36:52Z","labels":{"app.kubernetes.io/instance":"device-integration-dev","run":"device-integration-dev"},"name":"device-integration-dev","namespace":"default","resourceVersion":"9413785","uid":"3b9020e6-1f81-417d-8adf-f594d31f12be"},"spec":{"externalTrafficPolicy":"Cluster","internalTrafficPolicy":"Cluster","ipFamilies":["IPv4"],"ipFamilyPolicy":"SingleStack","ports":[{"nodePort":31121,"port":80,"protocol":"TCP","targetPort":8080}],"selector":{"run":"device-integration-dev"},"sessionAffinity":"None","type":"NodePort"},"status":{"loadBalancer":{}}}
-  creationTimestamp: "2024-12-27T14:36:28Z"
   labels:
     app.kubernetes.io/instance: device-integration-dev
     run: device-integration-dev
   name: device-integration-dev
   namespace: default
 spec:
-  # clusterIP: 10.108.200.237
-  # clusterIPs:
-  # - 10.108.200.237
   externalTrafficPolicy: Cluster
   internalTrafficPolicy: Cluster
   ipFamilies:

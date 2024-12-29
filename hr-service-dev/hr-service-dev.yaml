@@ -3,16 +3,10 @@ kind: Service
 metadata:
   annotations:
     # cloud.google.com/neg: '{"ingress":true}'
-    
-  creationTimestamp: "2022-01-02T19:29:35Z"
   labels:
     run: hr-service-dev
   name: hr-service-dev
-  uid: 7ec84682-bc14-4aac-b0f2-dc8038739e68
 spec:
-  # clusterIP: 10.12.11.154
-  # clusterIPs:
-  # - 10.12.11.154
   externalTrafficPolicy: Cluster
   internalTrafficPolicy: Cluster
   ipFamilies:
