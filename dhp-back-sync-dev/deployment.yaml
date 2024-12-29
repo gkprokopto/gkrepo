@@ -1,23 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    deployment.kubernetes.io/revision: "75"
-    # kubectl.kubernetes.io/last-applied-configuration: |
-    #   {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"7"},"name":"dhp-background-synchronizer-dev","namespace":"default"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"run":"dhp-background-synchronizer-dev"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"creationTimestamp":null,"labels":{"run":"dhp-background-synchronizer-dev"}},"spec":{"containers":[{"env":[{"name":"DB_HOST","value":"10.90.80.3"},{"name":"DB_NAME","value":"dhpdev"},{"name":"DB_PASSWORD","value":"7u1UjP9Mp5"},{"name":"DB_PORT","value":"5432"},{"name":"DB_SCHEMA","value":"background_synchronizer"},{"name":"DB_USER","value":"dhp-poc"},{"name":"KEYCLOAK_USERNAME","value":"background-synchronizer"},{"name":"KEYCLOAK_PASSWORD","value":"jDXHSjn5AuW45Duf"}],"image":"gcr.io/dhp-poc/background-synchronizer@sha256:cd84af2a8d4371e68915c4dc805723a979d2eecfeed3fbe13804868f3f2f42ffdhp-background-synchronizer-dev","imagePullPolicy":"Always","name":"dhp-background-synchronizer-dev","ports":[{"containerPort":8080,"protocol":"TCP"}],"resources":{"limits":{"cpu":"1","memory":"1532Mi"},"requests":{"cpu":"500m"}},"terminationMessagePath":"/dev/dhp-background-synchronizer-dev-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":60}}}}
-  creationTimestamp: "2022-02-03T13:52:05Z"
-  generation: 94
   name: dhp-background-synchronizer-dev
   namespace: default
-  # resourceVersion: "971047463"
-  # uid: 6d9679ca-fc72-4531-b94c-dc0b04751f16
+  labels:
+    app.kubernetes.io/name: dhp-background-synchronizer-dev
+    app.kubernetes.io/instance: dhp-background-synchronizer-dev
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      run: dhp-background-synchronizer-dev
+      app.kubernetes.io/name: dhp-background-synchronizer-dev
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -25,68 +20,32 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      annotations:
-        kubectl.kubernetes.io/restartedAt: "2022-02-17T02:26:17Z"
-      creationTimestamp: null
       labels:
-        run: dhp-background-synchronizer-dev
+        app.kubernetes.io/name: dhp-background-synchronizer-dev
     spec:
       containers:
-      - env:
-        - name: DB_HOST
-          value: 10.90.80.3
-        
-        image: nginx:latest #gcr.io/dhp-poc/background-synchronizer:2024-12-02T11-46-00Z.167.33046915
+      - name: dhp-background-synchronizer-dev
+        image: nginx:latest
         imagePullPolicy: Always
-        name: dhp-background-synchronizer-dev
         ports:
         - containerPort: 8080
           protocol: TCP
         resources:
           limits:
-            cpu: "500m" #"1"
-            memory: 512Mi #2Gi
+            cpu: 500m
+            memory: 500Mi
           requests:
-            cpu: 50m #100m
-            memory: 128Mi #150Mi
-        # terminationMessagePath: /dev/dhp-background-synchronizer-dev-log
-        terminationMessagePolicy: File
+            cpu: 100m
+            memory: 200Mi
         volumeMounts:
-        # - mountPath: /opt/app/synchronizer/config/KeycloakConfig
-        #   name: config
         - mountPath: /opt/app/synchronizer/config/secrets
           name: secret
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 60
       volumes:
-      # - configMap:
-      #     defaultMode: 420
-      #     name: dhp-background-synchronizer-dev-configmap
-      #   name: config
       - name: secret
         secret:
           defaultMode: 420
           secretName: dhp-background-synchronizer-dev-secret
-status:
-  availableReplicas: 1
-  # conditions:
-  # - lastTransitionTime: "2022-02-03T13:52:05Z"
-  #   lastUpdateTime: "2024-12-02T11:50:34Z"
-  #   message: ReplicaSet "dhp-background-synchronizer-dev-7d98dc56cc" has successfully
-  #     progressed.
-  #   reason: NewReplicaSetAvailable
-  #   status: "True"
-  #   type: Progressing
-  # - lastTransitionTime: "2024-12-04T08:40:15Z"
-  #   lastUpdateTime: "2024-12-04T08:40:15Z"
-  #   message: Deployment has minimum availability.
-  #   reason: MinimumReplicasAvailable
-  #   status: "True"
-  #   type: Available
-  observedGeneration: 94
-  readyReplicas: 1
-  replicas: 1
-  updatedReplicas: 1
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 60
