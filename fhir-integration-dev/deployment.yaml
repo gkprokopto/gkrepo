@@ -53,22 +53,3 @@ spec:
           defaultMode: 420
           name: fhir-integration-dev-configmap
         name: config
-status:
-  availableReplicas: 1
-  conditions:
-  - lastTransitionTime: '2024-12-29T22:13:53Z'	
-    lastUpdateTime: '2024-12-29T22:13:53Z'
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
-  - lastTransitionTime: '2024-12-29T22:13:49Z'	
-    lastUpdateTime: '2024-12-29T22:13:53Z'	
-    message: ReplicaSet "fhir-integration-dev-98d84bd89" has successfully progressed.
-    reason: NewReplicaSetAvailable
-    status: "True"
-    type: Progressing
-  observedGeneration: 4
-  readyReplicas: 1
-  replicas: 1
-  updatedReplicas: 1
