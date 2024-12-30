@@ -52,22 +52,4 @@ spec:
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 60
-status:
-  availableReplicas: 1
-  conditions:
-  - lastTransitionTime: "2024-11-14T13:31:41Z"
-    lastUpdateTime: "2024-11-14T13:31:41Z"
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
-  - lastTransitionTime: "2022-10-01T05:42:26Z"
-    lastUpdateTime: "2024-12-27T14:09:31Z"
-    message: ReplicaSet "wellness-service-dev-85598f8954" has successfully progressed.
-    reason: NewReplicaSetAvailable
-    status: "True"
-    type: Progressing
-  observedGeneration: 1
-  readyReplicas: 1
-  replicas: 1
-  updatedReplicas: 1
+
