@@ -2,17 +2,14 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: "857"
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"1"},"creationTimestamp":"2021-12-31T04:12:13Z","generation":1,"labels":{"run":"wellness-service-dev"},"name":"wellness-service-dev","namespace":"default","resourceVersion":"7425418","uid":"b66d1b34-974c-4d77-9e27-0c1ea0ddbc51"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"run":"wellness-service-dev"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"creationTimestamp":null,"labels":{"run":"wellness-service-dev"}},"spec":{"containers":[{"env":[{"name":"FHIR_URL","value":"https://heathrecords-fhir-wellness-api-dev-47lzkehxga-uc.a.run.app/fhir"},{"name":"VITAL_SIGNS_RECORD_SIZE","value":"50"},{"name":"KEYCLOAK_CLIENT_ID","value":"coligomed-apps"},{"name":"KEYCLOAK_SERVER_URL","value":"https://kas.coligomed.com/auth"},{"name":"KEYCLOAK_REALM","value":"coligomed-users"}],"image":"gcr.io/dhp-poc/wellness-services:211229.64.29f10461","imagePullPolicy":"Always","name":"wellness-service-dev","ports":[{"containerPort":8080,"protocol":"TCP"}],"resources":{"limits":{"cpu":"1","memory":"1532Mi"},"requests":{"cpu":"500m"}},"terminationMessagePath":"/dev/wellness-service-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":60}}},"status":{"availableReplicas":1,"conditions":[{"lastTransitionTime":"2021-12-31T04:12:36Z","lastUpdateTime":"2021-12-31T04:12:36Z","message":"Deployment has minimum availability.","reason":"MinimumReplicasAvailable","status":"True","type":"Available"},{"lastTransitionTime":"2021-12-31T04:12:13Z","lastUpdateTime":"2021-12-31T04:12:36Z","message":"ReplicaSet \"wellness-service-dev\" has successfully progressed.","reason":"NewReplicaSetAvailable","status":"True","type":"Progressing"}],"observedGeneration":1,"readyReplicas":1,"replicas":1,"updatedReplicas":1}}
-  creationTimestamp: "2022-01-01T19:21:39Z"
-  generation: 859
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: null
+  generation: 1
   labels:
+    app.kubernetes.io/instance: wellness-service-dev
     run: wellness-service-dev
   name: wellness-service-dev
   namespace: default
-  resourceVersion: "994920732"
-  uid: 50d9229a-2746-4b42-b13f-9f1d0d840cf9
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -27,105 +24,15 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      annotations:
-        kubectl.kubernetes.io/restartedAt: "2024-11-28T06:28:15Z"
       creationTimestamp: null
       labels:
         run: wellness-service-dev
     spec:
       containers:
       - env:
-        - name: FHIR_URL
-          value: http://heathrecords-fhir-api-dev.default.svc.cluster.local/healthrecordsfhir/fhir
-        - name: FHIR_URL1
-          value: http://heathrecords-fhir-api-dev.default.svc.cluster.local/healthrecordsfhir/fhir
-        - name: USER_SERVICE_URL
-          value: http://user-service-dev.default.svc.cluster.local
-        - name: EHR_SCREENING_DAYS
-          value: "30"
-        - name: ES_URL
-          value: https://coligomed-es-dev.es.us-central1.gcp.cloud.es.io:9243
-        - name: ES_API_KEY
-          value: VkZ6clluNEI5eXRPTm9HTmFhUXo6UThiT2EtemFTNHVra1R4U1FSMnRVQQ==
-        - name: SUBSCRIPTION_KEY
-          value: eec36d3f06924fc6a427e30ebfb5cb6b
-        - name: VITAL_SIGNS_RECORD_SIZE
-          value: "50"
-        - name: KEYCLOAK_CLIENT_ID
-          value: coligomed-apps
-        - name: KEYCLOAK_SERVER_URL
-          value: https://keycloak-test.coligomed.com/auth
-        - name: KEYCLOAK_REALM
-          value: coligomed-users
-        - name: KEYCLOAK_ADMIN_CLI_SECRET
-          value: LHMHnt3jFz8DOwOunE9jQnRsNiLDZz1O
-        - name: REDIS_DB_HOST
-          value: 10.90.81.3
-        - name: REDIS_DB_PORT
-          value: "6379"
-        - name: CONSENT_MANAGER_URL
-          value: http://dhp-consents-manager-dev.default.svc.cluster.local
-        - name: DB_USER
-          value: dhp-poc
-        - name: DB_HOST
-          value: 10.90.80.3
-        - name: DB_NAME
-          value: dhpdev
-        - name: DB_PORT
-          value: "5432"
-        - name: DB_SCHEMA
-          value: wellness
-        - name: HR_SERVICE_URL
-          value: http://hr-service-dev.default.svc.cluster.local
-        - name: BACKGROUND_SYNC_USER_ID
-          value: 750c814f-3c3e-4c22-86ce-b83397b8b053
-        - name: MESSAGING_SERVICE_URL
-          value: https://myhealth-api-dev.coligomed.com/messaging
-        - name: WELLNESS_SERVICE_URL
-          value: http://wellness-service-dev.default.svc.cluster.local
-        - name: KEYCLOAK_BKGROUND_SYNC_USERNAME
-          value: background-synchronizer@coligomed.com
-        - name: KEYCLOAK_BKGROUND_SYNC_PASSWORD
-          value: jDXHSjn5AuW45Duf
-        - name: SENTRY_ENV
-          value: dev
-        - name: NOTIFICATION_SERVICE_URL
-          value: http://messaging-dev.default.svc.cluster.local
-        - name: CHRONIC_CONDITIONS
-          value: diabetes,hypertension,cancer,hepatitis
-        - name: API_KEY
-          value: GMc5bYqtyrpuwcJ5yBbSBVq7qS8w6uVD
-        - name: KAFKA_BROKERS
-          value: kafka-0.kafka-headless.apache-kafka.svc.cluster.local:9094|kafka-1.kafka-headless.apache-kafka.svc.cluster.local:9094|kafka-2.kafka-headless.apache-kafka.svc.cluster.local:9094
-        - name: SENTRY_SAMPLE_RATE
-          value: "0.03"
-        - name: SENTRY_DEBUG
-          value: "false"
-        - name: TOTAL_RPM_READING
-          value: "16"
-        - name: EDAMAM_URL
-          value: https://api.edamam.com/api/food-database/v2
-        - name: EDAMAM_APP_ID
-          value: 6b76ddcf
-        - name: EDAMAM_APP_KEY
-          value: bf0de51bd846a0eb8f343b9d3e249447
-        - name: LLM_SERVICE_URL
-          value: https://myhealth-api-dev.coligomed.com/llmservice
-        - name: VITAL_SIGNS_QUERY_SIZE
-          value: "200"
-        - name: MONGO_REMOTE_URL
-          value: mongodb://coli-mongo-user:Tw2T1c3ijyaQEanIcBiGkPCaPuvj5B7QPg3XNJsLMo1hxVUIDk0cgEfenlRCAo8xMiP3CDNztSDIUyGiqbdXylgSRur15Jl1sYz@10.128.0.48:27050/health-data?retryWrites=true&serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=coligomed&authMechanism=SCRAM-SHA-1
-        - name: AI_PERSISTENCE_SERVICE_URL
-          value: https://myhealth-api-dev.coligomed.com/aipersistenceservice
-        - name: PULSE_CONSECUTIVE_PERIOD
-          value: "10"
-        - name: PULSE_INSIGHT_TIME_WINDOW
-          value: "720"
-        - name: PULSE_MINIMUM_READINGS_IN_CONSECUTIVE_PERIOD
-          value: "3"
-        - name: SUPPORTED_VITAL_TYPES
-          value: BP,GLUCOSE,PULSE,SPO2,BODY-WEIGHT
-        image: gcr.io/dhp-poc/wellness-services:2024-12-27T12-59-00Z.3165.bfc09f33
+        - name: lock
+          value: key
+        image: nginx:latest
         imagePullPolicy: Always
         name: wellness-service-dev
         ports:
@@ -133,26 +40,18 @@ spec:
           protocol: TCP
         resources:
           limits:
-            cpu: "1"
-            memory: 8Gi
+            cpu: "0.1"
+            memory: 128Mi
           requests:
-            cpu: 250m
-            memory: 256Mi
+            cpu: "0.05"
+            memory: 64Mi
         terminationMessagePath: /dev/wellness-service-log
         terminationMessagePolicy: File
-        volumeMounts:
-        - mountPath: /usr/wellness-service-dev/config.properties
-          name: config
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
       securityContext: {}
       terminationGracePeriodSeconds: 60
-      volumes:
-      - configMap:
-          defaultMode: 420
-          name: wellness-service-dev-configmap
-        name: config
 status:
   availableReplicas: 1
   conditions:
@@ -168,7 +67,7 @@ status:
     reason: NewReplicaSetAvailable
     status: "True"
     type: Progressing
-  observedGeneration: 859
+  observedGeneration: 1
   readyReplicas: 1
   replicas: 1
   updatedReplicas: 1
