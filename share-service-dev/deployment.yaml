@@ -5,6 +5,7 @@ metadata:
     deployment.kubernetes.io/revision: "1"
   generation: 1
   labels:
+    app.kubernetes.io/instance: share-service-dev
     run: share-service-dev
   name: share-service-dev
   namespace: default
