@@ -6,6 +6,7 @@ metadata:
   creationTimestamp: null
   generation: 1
   labels:
+    app.kubernetes.io/instance: messaging-dev
     run: messaging-dev
   name: messaging-dev
   namespace: default
