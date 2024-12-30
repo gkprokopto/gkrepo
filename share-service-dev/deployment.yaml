@@ -2,17 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: "142"
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"1"},"creationTimestamp":"2021-12-31T04:12:13Z","generation":1,"labels":{"run":"share-service-dev"},"name":"share-service-dev","namespace":"default","resourceVersion":"7425418","uid":"b66d1b34-974c-4d77-9e27-0c1ea0ddbc51"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"run":"share-service-dev"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"creationTimestamp":null,"labels":{"run":"share-service-dev"}},"spec":{"containers":[{"env":[{"name":"DB_USER","value":"dhp-poc"},{"name":"DB_HOST","value":"10.90.80.3"},{"name":"DB_NAME","value":"dhpdev"},{"name":"DB_PORT","value":"5432"}],"image":"gcr.io/dhp-poc/shares-services:211216.32.44b64637","imagePullPolicy":"Always","name":"heathrecords-fhir-api-dev","ports":[{"containerPort":8080,"protocol":"TCP"}],"resources":{"limits":{"cpu":"1","memory":"1532Mi"},"requests":{"cpu":"500m"}},"terminationMessagePath":"/dev/share-service-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":60}}},"status":{"availableReplicas":1,"conditions":[{"lastTransitionTime":"2021-12-31T04:12:36Z","lastUpdateTime":"2021-12-31T04:12:36Z","message":"Deployment has minimum availability.","reason":"MinimumReplicasAvailable","status":"True","type":"Available"},{"lastTransitionTime":"2021-12-31T04:12:13Z","lastUpdateTime":"2021-12-31T04:12:36Z","message":"ReplicaSet \"share-service-dev\" has successfully progressed.","reason":"NewReplicaSetAvailable","status":"True","type":"Progressing"}],"observedGeneration":1,"readyReplicas":1,"replicas":1,"updatedReplicas":1}}
-  creationTimestamp: "2022-01-01T19:04:05Z"
-  generation: 144
+    deployment.kubernetes.io/revision: "1"
+  generation: 1
   labels:
     run: share-service-dev
   name: share-service-dev
   namespace: default
-  resourceVersion: "950695389"
-  uid: 4eaf0020-d1aa-45f1-86b9-9eb0e27b6d89
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -27,53 +22,14 @@ spec:
     type: RollingUpdate
   template:
     metadata:
-      creationTimestamp: null
       labels:
         run: share-service-dev
     spec:
       containers:
       - env:
-        - name: DB_USER
-          value: dhp-poc
-        - name: DB_HOST
-          value: 10.90.80.3
-        - name: DB_NAME
-          value: dhpdev
-        - name: DB_PORT
-          value: "5432"
-        - name: DB_PASSWORD
-          value: 7u1UjP9Mp5
-        - name: KEYCLOAK_CLIENT_ID
-          value: coligomed-apps
-        - name: KEYCLOAK_SERVER_URL
-          value: https://keycloak-test.coligomed.com/auth
-        - name: KEYCLOAK_REALM
-          value: coligomed-users
-        - name: CONSENT_MANAGER_URL
-          value: http://dhp-consents-manager-dev.default.svc.cluster.local
-        - name: NOTIFICATION_SERVICE_URL
-          value: http://messaging-dev.default.svc.cluster.local
-        - name: USER_SERVICE_URL
-          value: http://user-service-dev.default.svc.cluster.local
-        - name: PROVIDER_PORTAL_URL
-          value: https://myhealth-dev.coligomed.com
-        - name: KEYCLOAK_BKGROUND_SYNC_USERNAME
-          value: background-synchronizer@coligomed.com
-        - name: KEYCLOAK_BKGROUND_SYNC_PASSWORD
-          value: jDXHSjn5AuW45Duf
-        - name: KEYCLOAK_ADMIN_CLI_SECRET
-          value: LHMHnt3jFz8DOwOunE9jQnRsNiLDZz1O
-        - name: ANDROID_STORE_URL
-          value: https://play.google.com/store/apps/details?id=com.coligomed.coligomed
-        - name: ISO_STORE_URL
-          value: https://apps.apple.com/app/coligomed/id1586570243
-        - name: SUPPORT_EMAIL
-          value: support at coligomed.com
-        - name: CRYPTO_ENCRYPT_KEY
-          value: lAS54mGEig4rROtmaIgORVCncFvIIP7X
-        - name: SENTRY_ENV
-          value: dev
-        image: gcr.io/dhp-poc/shares-services:2024-11-14T13-57-20Z.351.01987e99
+        - name: lock
+          value: key
+        image: nginx:latest
         imagePullPolicy: Always
         name: share-service-dev
         ports:
@@ -81,42 +37,14 @@ spec:
           protocol: TCP
         resources:
           limits:
-            cpu: "1"
-            memory: 2Gi
+            cpu: "0.5"
+            memory: 128Mi
           requests:
-            cpu: 100m
-            memory: 100Mi
+            cpu: "0.1"
+            memory: 64Mi
         terminationMessagePath: /dev/share-service-log
         terminationMessagePolicy: File
-        volumeMounts:
-        - mountPath: /usr/share-service-dev/config.properties
-          name: config
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
-      securityContext: {}
       terminationGracePeriodSeconds: 60
-      volumes:
-      - configMap:
-          defaultMode: 420
-          name: share-service-dev-configmap
-        name: config
-status:
-  availableReplicas: 1
-  conditions:
-  - lastTransitionTime: "2024-11-14T13:33:18Z"
-    lastUpdateTime: "2024-11-14T13:33:18Z"
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
-  - lastTransitionTime: "2022-01-01T19:04:05Z"
-    lastUpdateTime: "2024-11-14T14:02:22Z"
-    message: ReplicaSet "share-service-dev-b55f69767" has successfully progressed.
-    reason: NewReplicaSetAvailable
-    status: "True"
-    type: Progressing
-  observedGeneration: 144
-  readyReplicas: 1
-  replicas: 1
-  updatedReplicas: 1
