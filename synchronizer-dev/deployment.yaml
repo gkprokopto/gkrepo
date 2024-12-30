@@ -4,6 +4,7 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   labels:
+    app.kubernetes.io/instance: synchronizer-dev
     run: synchronizer-dev
   name: synchronizer-dev
   namespace: default
