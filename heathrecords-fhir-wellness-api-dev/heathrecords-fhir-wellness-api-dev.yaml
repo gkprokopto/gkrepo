@@ -9,7 +9,7 @@ metadata:
   name: heathrecords-fhir-wellness-api-dev
   namespace: default
 spec:
-  clusterIP: 10.12.10.255
+  # clusterIP: 10.12.10.255
   ports:
   - nodePort: 30330
     port: 80
