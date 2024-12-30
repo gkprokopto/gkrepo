@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    deployment.kubernetes.io/revision: "2" # ArgoCD will update this on sync
+    deployment.kubernetes.io/revision: "1" # ArgoCD will update this on sync
   creationTimestamp: null # Allow Kubernetes to set this automatically
   generation: 7 # Automatically managed by Kubernetes
   labels:
