@@ -4,7 +4,7 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   creationTimestamp: null
-  generation: 1
+  generation: 2
   labels:
     app.kubernetes.io/instance: messaging-dev
     run: messaging-dev
