@@ -1,143 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    deployment.kubernetes.io/revision: "2336"
-    kubectl.kubernetes.io/last-applied-configuration: |
-      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{"deployment.kubernetes.io/revision":"7"},"name":"provider-portal-dev","namespace":"default"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":10,"selector":{"matchLabels":{"run":"provider-portal-dev"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"creationTimestamp":null,"labels":{"run":"provider-portal-dev"}},"spec":{"containers":[{"env":null,"image":"gcr.io/dhp-poc/customer-portal@sha256:4dbaf12455f37392347d251469c9bda37626a64faf72f0c8feee462e00b1f9a1","imagePullPolicy":"Always","name":"provider-portal-dev","ports":[{"containerPort":8080,"protocol":"TCP"}],"resources":{"limits":{"cpu":"1","memory":"1532Mi"},"requests":{"cpu":"500m"}},"terminationMessagePath":"/dev/provider-portal-log","terminationMessagePolicy":"File"}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","schedulerName":"default-scheduler","securityContext":{},"terminationGracePeriodSeconds":60}}}}
-  creationTimestamp: "2022-02-03T11:52:11Z"
-  generation: 2340
   name: provider-portal-dev
   namespace: default
-  resourceVersion: "997714773"
-  uid: 0c804b13-8749-41b5-8684-77bc38ac74f4
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  generation: 1
 spec:
-  progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
       run: provider-portal-dev
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
   template:
     metadata:
-      annotations:
-        kubectl.kubernetes.io/restartedAt: "2022-12-16T06:46:05Z"
-      creationTimestamp: null
       labels:
         run: provider-portal-dev
     spec:
       containers:
-      - env:
-        - name: MAX_FILE_SIZE_MB
-          value: "2"
-        - name: SIGNED_URL_EXPIRED_MIN
-          value: "15"
-        - name: NEXT_PUBLIC_API_URL
-          value: https://myhealth-api-dev.coligomed.com
-        - name: NEXT_PUBLIC_API_KEY
-          value: GMc5bYqtyrpuwcJ5yBbSBVq7qS8w6uVD-98983
-        - name: NEXT_PUBLIC_SENTRY_DSN
-          value: https://50d3c51865e34409bc34b108fcb53099@o1262132.ingest.sentry.io/6493329
-        - name: NEXT_PUBLIC_DEV_HEAP_ANALYTICS_APP_ID
-          value: "688041785"
-        - name: NEXT_PUBLIC_STAGE_HEAP_ANALYTICS_APP_ID
-          value: "2953576356"
-        - name: NEXT_PUBLIC_PROD_HEAP_ANALYTICS_APP_ID
-          value: "331031276"
-        - name: NEXT_PUBLIC_DECRYPTION_KEY
-          value: lAS54mGEig4rROtmaIgORVCncFvIIP7X
-        - name: NEXT_PUBLIC_SMS_INTERACTION_REQUEST_TIMEOUT_MIN
-          value: "15"
-        - name: NEXT_PUBLIC_TEST_SAMPLE
-          value: VALUE_FROM_KUBE
-        - name: NEXT_PUBLIC_TEST_SAMPLE_2
-          value: VALUE_FROM_KUBE_2
-        - name: NEXT_PUBLIC_TEST_SAMPLE_3
-          value: VALUE_FROM_KUBE_3
-        - name: RAJAT
-          value: RAJAT
-        - name: NEXT_PUBLIC_RAJAT
-          value: NEXT_PUBLIC_RAJAT
-        - name: FROM_CONFIG
-          value: FROM_CONFIG
-        - name: NEXT_PUBLIC_FROM_PACKAGE_1
-          value: NEXT_PUBLIC_FROM_PACKAGE_1
-        - name: FROM_PACKAGE
-          value: FROM_PACKAGE
-        - name: FROM_PACKAGE_DIRECT
-          value: FROM_PACKAGE_DIRECT
-        - name: NEXT_PUBLIC_FROM_CONFIG
-          value: NEXT_PUBLIC_FROM_CONFIG
-        - name: NEXT_PUBLIC_DEV_FIREBASE_API_KEY
-          value: AIzaSyCLqMQ1Zjf7vsRS0NhQuImpak7MlA0hbJo
-        - name: NEXT_PUBLIC_DEV_FIREBASE_PROJECT_ID
-          value: portal-dev-543d3
-        - name: NEXT_PUBLIC_DEV_FIREBASE_MESSAGING_SENDER_ID
-          value: "852394183845"
-        - name: NEXT_PUBLIC_DEV_FIREBASE_APP_ID
-          value: 1:852394183845:web:ef9f7cf4d9a991204d514c
-        - name: NEXT_PUBLIC_DEV_FIREBASE_VAPID_KEY
-          value: BMy65MIZIJN2jxX88P_bLQUjuwO5BPP9MWBKZ6eEjg77hY-q7wsyv2eA70wU_LKWckNBZpJJMlMV03mlfgCACDE
-        - name: NEXT_PUBLIC_STAGE_FIREBASE_API_KEY
-          value: AIzaSyCmghAUXYS7mu_gXmaZ1U37w2nUdJvcYSM
-        - name: NEXT_PUBLIC_STAGE_FIREBASE_PROJECT_ID
-          value: portal-stage-ca888
-        - name: NEXT_PUBLIC_STAGE_FIREBASE_MESSAGING_SENDER_ID
-          value: "205639782918"
-        - name: NEXT_PUBLIC_STAGE_FIREBASE_APP_ID
-          value: 1:205639782918:web:eacfc4dff99548d0e12987
-        - name: NEXT_PUBLIC_STAGE_FIREBASE_VAPID_KEY
-          value: BPT_zAoiXasWgPhJnGqG57l0Dgr5R_tIq-3ii5kOiUe1czlhtEYZbsR28zYpPYOz6wAsX78RGNPOV7ukB7AvAuw
-        - name: NEXT_PUBLIC_PROD_FIREBASE_API_KEY
-          value: AIzaSyBKxj8uTw2P-EuImR_zlYYlEk25E6OWNxw
-        - name: NEXT_PUBLIC_PROD_FIREBASE_PROJECT_ID
-          value: portal-prod-61fbe
-        - name: NEXT_PUBLIC_PROD_FIREBASE_MESSAGING_SENDER_ID
-          value: "815536884503"
-        - name: NEXT_PUBLIC_PROD_FIREBASE_APP_ID
-          value: 1:815536884503:web:11f648e5cd7443719e4552
-        - name: NEXT_PUBLIC_PROD_FIREBASE_VAPID_KEY
-          value: BNDGUHVkL7dd1Fst1SQ81KTIl7J2KF1u_Ny7ohVYISvh_K6PhroyGoYSRoFSJ8lwdmOLbukmnT0YL1oPzgdKEE4
-        image: gcr.io/dhp-poc/customer-portal:2024-12-30T07-05-26Z.10651.542b38e5
+      - name: provider-portal-dev
+        image: nginx:latest
         imagePullPolicy: Always
-        name: provider-portal-dev
-        ports:
-        - containerPort: 8080
-          protocol: TCP
+        env:
+        - name: lock
+          value: key
         resources:
-          limits:
-            cpu: "1"
-            memory: 500Mi
           requests:
+            cpu: 10m
+            memory: 32Mi
+          limits:
             cpu: 100m
-        terminationMessagePath: /dev/provider-portal-log
-        terminationMessagePolicy: File
+            memory: 128Mi
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
       restartPolicy: Always
-      schedulerName: default-scheduler
-      securityContext: {}
-      terminationGracePeriodSeconds: 60
-status:
-  availableReplicas: 1
-  conditions:
-  - lastTransitionTime: "2024-11-14T13:33:46Z"
-    lastUpdateTime: "2024-11-14T13:33:46Z"
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
-  - lastTransitionTime: "2022-11-30T04:19:54Z"
-    lastUpdateTime: "2024-12-30T07:27:01Z"
-    message: ReplicaSet "provider-portal-dev-8688698d86" has successfully progressed.
-    reason: NewReplicaSetAvailable
-    status: "True"
-    type: Progressing
-  observedGeneration: 2340
-  readyReplicas: 1
-  replicas: 1
-  updatedReplicas: 1
