@@ -6,6 +6,7 @@ metadata:
   creationTimestamp: "2022-01-01T18:48:04Z"
   generation: 1
   labels:
+    app.kubernetes.io/instance: user-service-dev
     run: user-service-dev
   name: user-service-dev
   namespace: default
