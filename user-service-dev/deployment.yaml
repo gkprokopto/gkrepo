@@ -4,7 +4,7 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   creationTimestamp: "2022-01-01T18:48:04Z"
-  generation: 1
+  generation: 2
   labels:
     app.kubernetes.io/instance: user-service-dev
     run: user-service-dev
