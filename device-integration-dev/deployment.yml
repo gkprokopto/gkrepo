@@ -1,0 +1,186 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "325"
+  creationTimestamp: "2021-12-30T17:50:11Z"
+  generation: 328
+  labels:
+    run: device-integration-dev
+  name: device-integration-dev
+  namespace: default
+  resourceVersion: "963926953"
+  uid: 818ad747-912c-4bce-ae1e-c2ae2e687103
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      run: device-integration-dev
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/restartedAt: "2024-09-10T12:11:46Z"
+      creationTimestamp: null
+      labels:
+        run: device-integration-dev
+    spec:
+      containers:
+      - env:
+        - name: DB_HOST
+          value: 10.90.80.3
+        - name: DB_NAME
+          value: dhpdev
+        - name: DB_PASSWORD
+          value: 7u1UjP9Mp5
+        - name: DB_PORT
+          value: “5432”
+        - name: DB_SCHEMA
+          value: wellness
+        - name: DB_USER
+          value: dhp-poc
+        - name: KEYCLOAK_CLIENT_ID
+          value: coligomed-apps
+        - name: KEYCLOAK_SERVER_URL
+          value: https://keycloak-test.coligomed.com/auth
+        - name: KEYCLOAK_REALM
+          value: coligomed-users
+        - name: FITNESS_CLIENT_ID
+          value: 138561949036-glnn2gr7sr1p8ok75qkf7l9060no84kn.apps.googleusercontent.com
+        - name: FITNESS_CLIENT_SECRET
+          value: idZUUzUuYDHGaYmRnllstkS2
+        - name: REDIRECT_URL
+          value: https://myhealth-api-dev.coligomed.com/deviceintegration/googlefit/oauth2callback
+        - name: REDIS_DB_HOST
+          value: 10.90.81.3
+        - name: REDIS_DB_NAME
+          value: "0"
+        - name: REDIS_DB_PORT
+          value: "6379"
+        - name: SYNC_HOUR
+          value: "0"
+        - name: FHIR_SERVER
+          value: http://heathrecords-fhir-api-dev.default.svc.cluster.local/healthrecordsfhir/fhir
+        - name: ES_URL
+          value: https://coligomed-es-dev.es.us-central1.gcp.cloud.es.io:9243
+        - name: ES_API_KEY
+          value: VkZ6clluNEI5eXRPTm9HTmFhUXo6UThiT2EtemFTNHVra1R4U1FSMnRVQQ==
+        - name: SMART_METER_API_KEY
+          value: B3B08A77-43CD-4012-A417-203F78914D41-1643819354
+        - name: SMART_METER_URL
+          value: https://api.iglucose.com/readings/
+        - name: KAFKA_BROKERS
+          value: kafka-0.kafka-headless.apache-kafka.svc.cluster.local:9094|kafka-1.kafka-headless.apache-kafka.svc.cluster.local:9094|kafka-2.kafka-headless.apache-kafka.svc.cluster.local:9094
+        - name: GOOGLEFIT_DELAY_MILLIS
+          value: "900000"
+        - name: SENTRY_ENV
+          value: dev
+        - name: CONSENT_MANAGER_URL
+          value: https://myhealth-api-dev.coligomed.com/consentmanager
+        - name: BACKGROUND_SYNC_USER_ID
+          value: 750c814f-3c3e-4c22-86ce-b83397b8b053
+        - name: USER_SERVICE_URL
+          value: https://myhealth-api-dev.coligomed.com/userservice
+        - name: BKGROUND_SYNC_USERNAME
+          value: background-synchronizer@coligomed.com
+        - name: BKGROUND_SYNC_PASSWORD
+          value: jDXHSjn5AuW45Duf
+        - name: FITBIT_REDIRECT_URL
+          value: https://myhealth-api-dev.coligomed.com/deviceintegration/fitbit/oauth2callbackFitBit
+        - name: WELLNESS_SERVICE_URL
+          value: https://myhealth-api-dev.coligomed.com/wellnessservice
+        - name: DEXCOM_BASE_URL
+          value: https://sandbox-api.dexcom.com
+        - name: DEXCOM_REDIRECT_URL
+          value: https://myhealth-api-dev.coligomed.com/deviceintegration/v1/dexcom/oauth2callback
+        - name: DEXCOM_CLIENT_ID
+          value: aLqwuqD1QUXa92jLPLQbiVqsxg1yAv2R
+        - name: DEXCOM_CLIENT_SECRET
+          value: AQd3kEm4afjnFjVC
+        - name: DEXCOM_OAUTH2_SCOPE
+          value: offline_access
+        - name: DEXCOM_OAUTH2_ENDPOINT
+          value: v2/oauth2/login
+        - name: DEXCOM_OFFSET_IN_MINUTES
+          value: "-60"
+        - name: FITBIT_CLIENT_URL
+          value: https://api.fitbit.com/
+        - name: FITBIT_CLIENT_ID
+          value: 238LP6
+        - name: FITBIT_CLIENT_SECRET
+          value: 9cc6aed931a3c230d342234955aaf1c0
+        - name: FITBIT_CLIENT_BASE64
+          value: MjM4TFA2OjljYzZhZWQ5MzFhM2MyMzBkMzQyMjM0OTU1YWFmMWMw
+        - name: INBODY_ACCOUNT_ID
+          value: ridic
+        - name: INBODY_API_KEY
+          value: tN5TfV8JyzfbRCIXU07cnZk3O8ylCrUcAOnHjPnB9Qk=
+        - name: INBODY_API_URL
+          value: https://apiusa.lookinbody.com
+        - name: BG_API_KEY
+          value: 9SATCVDWEXGZH2J4M5N6Q8R9SB
+        - name: TENOVI_API_URL
+          value: https://api2.tenovi.com/clients/coligomed
+        - name: MONGO_URI
+          value: mongodb://coli-mongo-user:Tw2T1c3ijyaQEanIcBiGkPCaPuvj5B7QPg3XNJsLMo1hxVUIDk0cgEfenlRCAo8xMiP3CDNztSDIUyGiqbdXylgSRur15Jl1sYz@10.128.0.48:27050/device-integration?retryWrites=true&serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&authSource=coligomed&authMechanism=SCRAM-SHA-1
+        - name: TENOVI_API_KEY
+          value: 3webXWJv.NYsTBd4dZqBW7DsXZISCYt8rcY4u83hn
+        image: gcr.io/dhp-poc/device-integration:2024-11-27T10-17-39Z.989.1c53ae6b
+        imagePullPolicy: Always
+        name: device-integration-dev
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "1"
+            memory: 5000Mi
+          requests:
+            cpu: 100m
+            memory: 4000Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /usr/device-integration-dev/config.properties
+          name: config
+        - mountPath: /etc/device-integration-dev/secrets
+          name: secret
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 60
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: device-integration-dev-configmap
+        name: config
+      - name: secret
+        secret:
+          defaultMode: 420
+          secretName: device-integration-dev-secret
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2024-09-17T00:23:13Z"
+    lastUpdateTime: "2024-09-17T00:23:13Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2022-02-03T22:21:16Z"
+    lastUpdateTime: "2024-11-27T10:23:27Z"
+    message: ReplicaSet "device-integration-dev-6669bf7488" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 328
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1

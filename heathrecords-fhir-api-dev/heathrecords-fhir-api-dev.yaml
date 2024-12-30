@@ -1,19 +1,19 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    cloud.google.com/neg: '{"ingress":true}'
-  labels:
-    run: heathrecords-fhir-api-dev
   name: heathrecords-fhir-api-dev
   namespace: default
+  labels:
+    run: heathrecords-fhir-api-dev
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
 spec:
+  type: LoadBalancer
   externalTrafficPolicy: Cluster
   ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 8080
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
   selector:
     run: heathrecords-fhir-api-dev
   sessionAffinity: None
-  type: LoadBalancer

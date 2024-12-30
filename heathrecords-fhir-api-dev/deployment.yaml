@@ -1,78 +1,61 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    deployment.kubernetes.io/revision: "1"
-  generation: 1
-  labels:
-    run: heathrecords-fhir-api-dev
   name: heathrecords-fhir-api-dev
   namespace: default
+  labels:
+    run: heathrecords-fhir-api-dev
 spec:
-  progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 10
   selector:
     matchLabels:
       run: heathrecords-fhir-api-dev
   strategy:
+    type: RollingUpdate
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
-    type: RollingUpdate
   template:
     metadata:
       labels:
         run: heathrecords-fhir-api-dev
     spec:
       containers:
-      - env:
-        - name: lock
-          value: key
-        image: nginx:latest
-        imagePullPolicy: Always
-        name: heathrecords-fhir-api-dev
-        ports:
-        - containerPort: 8080
-          protocol: TCP
-        resources:
-          limits:
-            cpu: "100m"
-            memory: 256Mi
-          requests:
-            cpu: "50m"
-            memory: 128Mi
-        terminationMessagePath: /dev/termination-log
-        terminationMessagePolicy: File
-        volumeMounts:
-        - mountPath: /usr/heathrecords-fhir-api-dev/config.properties
-          name: config
-        - mountPath: /application.yaml
-          name: app-config
-          subPath: application.yaml
+        - name: heathrecords-fhir-api-dev
+          image: nginx:latest
+          imagePullPolicy: Always
+          env:
+            - name: lock
+              value: key
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              cpu: "50m"
+              memory: 128Mi
+            limits:
+              cpu: "100m"
+              memory: 256Mi
+          volumeMounts:
+            - mountPath: /usr/heathrecords-fhir-api-dev/config.properties
+              name: config
+            - mountPath: /application.yaml
+              name: app-config
+              subPath: application.yaml
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      volumes:
+        - name: config
+          configMap:
+            name: heathrecords-fhir-api-dev-configmap
+            defaultMode: 420
+        - name: app-config
+          configMap:
+            name: hapi-config
+            defaultMode: 420
       dnsPolicy: ClusterFirst
       restartPolicy: Always
-      schedulerName: default-scheduler
       terminationGracePeriodSeconds: 60
-      volumes:
-      - configMap:
-          defaultMode: 420
-          name: heathrecords-fhir-api-dev-configmap
-        name: config
-      - configMap:
-          defaultMode: 420
-          name: hapi-config
-        name: app-config
-status:
-  availableReplicas: 1
-  conditions:
-  - lastTransitionTime: "2024-12-25T09:29:56Z"
-    lastUpdateTime: "2024-12-25T09:29:56Z"
-    message: Deployment has minimum availability.
-    reason: MinimumReplicasAvailable
-    status: "True"
-    type: Available
-  observedGeneration: 1
-  readyReplicas: 1
-  replicas: 1
-  updatedReplicas: 1
+  progressDeadlineSeconds: 600
+  revisionHistoryLimit: 10
