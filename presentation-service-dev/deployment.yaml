@@ -4,7 +4,7 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   creationTimestamp: "2022-11-07T05:13:56Z"
-  generation: 1
+  generation: 2
   labels:
     app: presentation-service
     app.kubernetes.io/instance: presentation-service-dev
