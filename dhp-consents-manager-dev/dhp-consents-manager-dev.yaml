@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: dhp-consents-manager-dev
+  namespace: default
+  labels:
+    run: dhp-consents-manager-dev
+  annotations:
+    cloud.google.com/neg: '{"ingress":true}'
+spec:
+  type: NodePort
+  selector:
+    run: dhp-consents-manager-dev
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      nodePort: 30001
+  externalTrafficPolicy: Cluster
