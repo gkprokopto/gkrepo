@@ -4,8 +4,8 @@ metadata:
   name: provider-portal-dev
   namespace: default
   annotations:
-    deployment.kubernetes.io/revision: "1"
-  generation: 1
+    deployment.kubernetes.io/revision: "2"
+  generation: 2
 spec:
   replicas: 1
   selector:
