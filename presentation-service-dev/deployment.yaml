@@ -7,6 +7,7 @@ metadata:
   generation: 1
   labels:
     app: presentation-service
+    app.kubernetes.io/instance: presentation-service-dev
   name: presentation-service-dev
   namespace: default
 spec:
