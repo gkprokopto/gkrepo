@@ -1,0 +1,34 @@
+  apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      cloud.google.com/neg: '{"ingress":true}'
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"cloud.google.com/neg":"{\"ingress\":true}"},"creationTimestamp":"2021-12-31T00:47:29Z","labels":{"run":"share-service-dev"},"name":"share-service-dev","namespace":"default","resourceVersion":"7346655","uid":"d2122217-6f83-4c4a-a01f-0b3a6bb0e4b4"},"spec":{"externalTrafficPolicy":"Cluster","ports":[{"port":80,"protocol":"TCP","targetPort":8080}],"selector":{"run":"share-service-dev"},"sessionAffinity":"None","type":"LoadBalancer"}}
+    creationTimestamp: "2022-01-02T19:12:39Z"
+    labels:
+      run: share-service-dev
+    name: share-service-dev
+    namespace: default
+    resourceVersion: "9407546"
+    uid: 20681634-d349-4866-a370-ee061e92db7a
+  spec:
+    clusterIP: 10.12.5.112
+    clusterIPs:
+    - 10.12.5.112
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - nodePort: 31807
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      run: share-service-dev
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}

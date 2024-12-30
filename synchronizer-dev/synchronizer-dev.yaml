@@ -1,0 +1,34 @@
+  apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      cloud.google.com/neg: '{"ingress":true}'
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{"cloud.google.com/neg":"{\"ingress\":true}"},"creationTimestamp":"2021-12-31T00:47:29Z","labels":{"run":"synchronizer-dev"},"name":"synchronizer-dev","namespace":"default","resourceVersion":"7346655","uid":"d2122217-6f83-4c4a-a01f-0b3a6bb0e4b4"},"spec":{"externalTrafficPolicy":"Cluster","ports":[{"port":80,"protocol":"TCP","targetPort":8080}],"selector":{"run":"synchronizer-dev"},"sessionAffinity":"None","type":"LoadBalancer"}}
+    creationTimestamp: "2022-01-02T19:11:40Z"
+    labels:
+      run: synchronizer-dev
+    name: synchronizer-dev
+    namespace: default
+    resourceVersion: "9407741"
+    uid: b95c1a02-c900-472d-8752-cba605c57419
+  spec:
+    clusterIP: 10.12.10.78
+    clusterIPs:
+    - 10.12.10.78
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Cluster
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - nodePort: 31559
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      run: synchronizer-dev
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
