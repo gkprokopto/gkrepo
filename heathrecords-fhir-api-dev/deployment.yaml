@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   annotations:	
     deployment.kubernetes.io/revision: '3'	
-  generation: 1
+  generation: 4
   name: heathrecords-fhir-api-dev
   namespace: default
   labels:
