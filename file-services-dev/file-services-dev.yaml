@@ -6,7 +6,7 @@ metadata:
   labels:
     run: file-services-dev
   name: file-services-dev
-  namespace: default
+  namespace: argocd
 spec:
   externalTrafficPolicy: Cluster
   ports:
